@@ -1,31 +1,52 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Rotozoom status page — powered by Upptime (runs on GitHub Actions, independent
+# of our own Cloudflare/Supabase infra so it stays up when they don't).
+owner: avs-dev-ledlightings
+repo: rotozoom-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Test Broken Site
-    url: https://thissitedoesnotexist.koj.co
+  - name: Website
+    url: https://rotozoom.com
+  - name: Status API
+    url: https://rotozoom.com/api/status
+  - name: Licensing
+    url: https://ttcrdwftrkdwcngqswrd.supabase.co/functions/v1/avs-connect-login
+    method: POST
+    body: "{}"
+    headers:
+      - "Content-Type: application/json"
+    expectedStatusCodes:
+      - 401
+  - name: Supabase
+    url: https://ttcrdwftrkdwcngqswrd.supabase.co/rest/v1/
+    expectedStatusCodes:
+      - 401
+  - name: AI — Claude (Anthropic)
+    url: https://api.anthropic.com/v1/models
+    expectedStatusCodes:
+      - 401
+  - name: Embeddings — Voyage
+    url: https://api.voyageai.com/v1/embeddings
+    method: POST
+    body: "{}"
+    headers:
+      - "Content-Type: application/json"
+    expectedStatusCodes:
+      - 400
+      - 401
+  - name: Payments — Stripe
+    url: https://api.stripe.com/v1/balance
+    expectedStatusCodes:
+      - 401
+  - name: Google Sign-in
+    url: https://accounts.google.com/.well-known/openid-configuration
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  cname: status.rotozoom.com
+  name: Rotozoom Status
+  introTitle: "Rotozoom — Service Status"
+  introMessage: "Live status and uptime history of Rotozoom and the services it depends on."
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+    - title: Website
+      href: https://rotozoom.com
