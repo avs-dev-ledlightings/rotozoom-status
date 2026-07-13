@@ -3,6 +3,12 @@
 owner: avs-dev-ledlightings
 repo: rotozoom-status
 
+# Auto-assign the incident issue Upptime opens on downtime, so the owner gets a
+# GitHub notification the moment a service (e.g. the Worker Network coordinator)
+# goes offline — instead of finding out by hand.
+assignees:
+  - avs-dev-ledlightings
+
 sites:
   - name: Website
     url: https://rotozoom.com
@@ -33,6 +39,13 @@ sites:
     expectedStatusCodes:
       - 400
       - 401
+  - name: Worker Network
+    # Cloud-AI background-removal coordinator, probed via rotozoom.com so the
+    # underlying host stays out of this public repo. 200 = coordinator reachable;
+    # /api/status returns 503 for this component when it's down.
+    url: https://rotozoom.com/api/status?component=workers
+    expectedStatusCodes:
+      - 200
   - name: Payments — Stripe
     url: https://api.stripe.com/v1/balance
     expectedStatusCodes:
