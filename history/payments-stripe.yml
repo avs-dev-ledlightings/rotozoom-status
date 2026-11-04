@@ -1,7 +1,7 @@
 url: https://api.stripe.com/v1/balance
 status: up
 code: 401
-responseTime: 40
-lastUpdated: 2026-11-03T03:51:44.223Z
+responseTime: 114
+lastUpdated: 2026-11-04T02:54:28.263Z
 startTime: 2026-06-26T12:53:15.144Z
 generator: Upptime <https://github.com/upptime/upptime>
